@@ -1,0 +1,36 @@
+* {
+  background-color: black;
+}
+
+.game-body {
+  margin: auto;
+  display: grid;
+  width: max(50%, 320px);
+  grid-template-columns: repeat(3, minmax(6rem, 1fr));
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.game-body__game-area {
+  color: white;
+  padding: 30% 0;
+  cursor: pointer;
+}
+
+.top {
+  border-top: none;
+}
+
+.left {
+  border-left: none;
+}
+
+.right {
+  border-right: none;
+}
+
+.bottom {
+  border-bottom: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
