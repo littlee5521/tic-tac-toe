@@ -46,11 +46,20 @@ const gameboard = (() => {
     let win = "";
     const horizontal = () => {
       let currentExp = 0;
-      for (x = 0; x < 3; x++) {
+      for (x = 0; x < 4; x++) {
         let counter = 0;
         for (i = 1; i < 3; i++) {
           console.log("Loop");
-          const bread = [getIndex(button) + i, getIndex(button) - i];
+          const bread = [
+            getIndex(button) + i,
+            getIndex(button) - i,
+            getIndex(button) + i * 3,
+            getIndex(button) - i * 3,
+            getIndex(button) + i * 4,
+            getIndex(button) - i * 4,
+            getIndex(button) + i * 2,
+            getIndex(button) - i * 2,
+          ];
           //spent a hour here because my index was returning a string and not a number smh
           if (playerList[currentTurn].type == gameStatus[bread[currentExp]]) {
             counter++;
@@ -67,66 +76,6 @@ const gameboard = (() => {
         currentExp = currentExp + 2;
       }
     };
-    const vertical = () => {
-      let counter = 0;
-      for (i = 1; i < 3; i++) {
-        //spent a hour here because my index was returning a string and not a number smh
-        if (
-          playerList[currentTurn].type == gameStatus[getIndex(button) + i * 3]
-        ) {
-          counter++;
-        }
-        if (
-          playerList[currentTurn].type == gameStatus[getIndex(button) - i * 3]
-        ) {
-          counter++;
-        }
-      }
-      if (counter >= 2) {
-        win = true;
-      }
-    };
-    const diagonalL = () => {
-      let counter = 0;
-      for (i = 1; i < 3; i++) {
-        //spent a hour here because my index was returning a string and not a number smh
-        if (
-          playerList[currentTurn].type == gameStatus[getIndex(button) + i * 4]
-        ) {
-          counter++;
-        }
-        if (
-          playerList[currentTurn].type == gameStatus[getIndex(button) - i * 4]
-        ) {
-          counter++;
-        }
-      }
-      if (counter >= 2) {
-        win = true;
-      }
-    };
-    const diagonalR = () => {
-      let counter = 0;
-      for (i = 1; i < 3; i++) {
-        //spent a hour here because my index was returning a string and not a number smh
-        if (
-          playerList[currentTurn].type == gameStatus[getIndex(button) + i * 2]
-        ) {
-          counter++;
-        }
-        if (
-          playerList[currentTurn].type == gameStatus[getIndex(button) - i * 2]
-        ) {
-          counter++;
-        }
-      }
-      if (counter >= 2) {
-        win = true;
-      }
-    };
-    diagonalR();
-    diagonalL();
-    vertical();
     horizontal();
     return win;
   };
