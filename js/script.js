@@ -13,15 +13,19 @@ const gameboard = (() => {
   const buttonlist = document.querySelectorAll(".game-body__game-area");
   let currentTurn = 0;
 
-  const getIndex = (button) =>{
-    let buttonId = button
-  }
+  const getIndex = (button) => {
+    let buttonId = button.id.replace(/[^0-9]/g, "");
+    return buttonId;
+  };
 
-  console.table(buttonlist);
   buttonlist.forEach((button) => {
     button.addEventListener("click", () => {
       button.textContent = playerList[currentTurn].type;
-      gameStatus.
+      gameStatus.splice(
+        getIndex(button),
+        getIndex(button),
+        playerList[currentTurn].type
+      );
       if (currentTurn == 0) {
         currentTurn = 1;
       } else {
@@ -36,4 +40,5 @@ const gameboard = (() => {
   for (i = 0; i < 9; i++) {
     gameStatus.push(0);
   }
+  return { gameStatus };
 })();
