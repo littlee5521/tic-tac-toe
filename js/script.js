@@ -45,38 +45,40 @@ const gameboard = (() => {
   const gamewinner = (button) => {
     let win = "";
     const horizontal = () => {
-      let counter = 0;
-      for (i = 1; i < 3; i++) {
-        console.log(i + "Whats going on");
-        //spent a hour here because my index was returning a string and not a number smh
-        if (playerList[currentTurn].type == gameStatus[getIndex(button) + i]) {
-          console.log("Hello");
-          counter++;
+      let currentExp = 0;
+      for (x = 0; x < 3; x++) {
+        let counter = 0;
+        for (i = 1; i < 3; i++) {
+          console.log("Loop");
+          const bread = [getIndex(button) + i, getIndex(button) - i];
+          //spent a hour here because my index was returning a string and not a number smh
+          if (playerList[currentTurn].type == gameStatus[bread[currentExp]]) {
+            counter++;
+          }
+          if (
+            playerList[currentTurn].type == gameStatus[bread[currentExp + 1]]
+          ) {
+            counter++;
+          }
         }
-        if (playerList[currentTurn].type == gameStatus[getIndex(button) - i]) {
-          console.log("Hello");
-          counter++;
+        if (counter >= 2) {
+          win = true;
         }
-      }
-      if (counter >= 2) {
-        win = true;
+        currentExp = currentExp + 2;
       }
     };
     const vertical = () => {
       let counter = 0;
       for (i = 1; i < 3; i++) {
-        console.log(i + "Whats going on");
         //spent a hour here because my index was returning a string and not a number smh
         if (
           playerList[currentTurn].type == gameStatus[getIndex(button) + i * 3]
         ) {
-          console.log("Hello");
           counter++;
         }
         if (
           playerList[currentTurn].type == gameStatus[getIndex(button) - i * 3]
         ) {
-          console.log("Hello");
           counter++;
         }
       }
@@ -87,18 +89,15 @@ const gameboard = (() => {
     const diagonalL = () => {
       let counter = 0;
       for (i = 1; i < 3; i++) {
-        console.log(i + "Whats going on");
         //spent a hour here because my index was returning a string and not a number smh
         if (
           playerList[currentTurn].type == gameStatus[getIndex(button) + i * 4]
         ) {
-          console.log("Hello");
           counter++;
         }
         if (
           playerList[currentTurn].type == gameStatus[getIndex(button) - i * 4]
         ) {
-          console.log("Hello");
           counter++;
         }
       }
@@ -109,18 +108,15 @@ const gameboard = (() => {
     const diagonalR = () => {
       let counter = 0;
       for (i = 1; i < 3; i++) {
-        console.log(i + "Whats going on");
         //spent a hour here because my index was returning a string and not a number smh
         if (
           playerList[currentTurn].type == gameStatus[getIndex(button) + i * 2]
         ) {
-          console.log("Hello");
           counter++;
         }
         if (
           playerList[currentTurn].type == gameStatus[getIndex(button) - i * 2]
         ) {
-          console.log("Hello");
           counter++;
         }
       }
